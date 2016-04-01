@@ -35,7 +35,7 @@ import javax.inject.Inject;
  * NotificationManager and NotificationCompat notifications configured in recommendation mode to
  * show notifications in the Android TV dashboard.
  */
-public class RecommendationBuilder {
+public class NotificationBuilder {
 
     private Context context;
     private NotificationManager notificationManager;
@@ -50,51 +50,51 @@ public class RecommendationBuilder {
     private PendingIntent pendingIntent;
 
     @Inject
-    public RecommendationBuilder() {
+    public NotificationBuilder() {
         //Empty
     }
 
-    public RecommendationBuilder setContext(Context context) {
+    public NotificationBuilder setContext(Context context) {
         this.context = context;
         return this;
     }
 
-    public RecommendationBuilder setId(int id) {
+    public NotificationBuilder setId(int id) {
         this.id = id;
         return this;
     }
 
-    public RecommendationBuilder setPriority(int priority) {
+    public NotificationBuilder setPriority(int priority) {
         this.priority = priority;
         return this;
     }
 
-    public RecommendationBuilder setTitle(String title) {
+    public NotificationBuilder setTitle(String title) {
         this.title = title;
         return this;
     }
 
-    public RecommendationBuilder setDescription(String description) {
+    public NotificationBuilder setDescription(String description) {
         this.description = description;
         return this;
     }
 
-    public RecommendationBuilder setImage(String uri) {
+    public NotificationBuilder setImage(String uri) {
         imageUri = uri;
         return this;
     }
 
-    public RecommendationBuilder setBackground(String uri) {
+    public NotificationBuilder setBackground(String uri) {
         backgroundUri = uri;
         return this;
     }
 
-    public RecommendationBuilder setIntent(PendingIntent intent) {
+    public NotificationBuilder setIntent(PendingIntent intent) {
         pendingIntent = intent;
         return this;
     }
 
-    public RecommendationBuilder setSmallIcon(int resourceId) {
+    public NotificationBuilder setSmallIcon(int resourceId) {
         smallIcon = resourceId;
         return this;
     }

@@ -19,7 +19,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.github.pedrovgs.tuentitv.R;
-import com.github.pedrovgs.tuentitv.recommendation.builder.RecommendationBuilder;
+import com.github.pedrovgs.tuentitv.recommendation.builder.NotificationBuilder;
 
 import java.io.IOException;
 
@@ -38,7 +38,7 @@ public class RecommendationService extends BaseIntentService {
     private static final String SERVICE_NAME = "RecommendationService";
 
     @Inject
-    RecommendationBuilder recommendationBuilder;
+    NotificationBuilder notificationBuilder;
 
     public RecommendationService() {
         super(SERVICE_NAME);
@@ -63,7 +63,7 @@ public class RecommendationService extends BaseIntentService {
 
     private void showRecommendation() {
         try {
-            recommendationBuilder.build();
+            notificationBuilder.build();
         } catch (IOException e) {
             Log.e(SERVICE_NAME, "IOException building recommendation.", e);
         }
@@ -80,7 +80,7 @@ public class RecommendationService extends BaseIntentService {
 //  }
 
     private void configureRecommendationBuilder() {
-        recommendationBuilder.setContext(getApplicationContext()).setSmallIcon(R.drawable.icn_wink);
+        notificationBuilder.setContext(getApplicationContext()).setSmallIcon(R.drawable.icn_wink);
     }
 
 //  private PendingIntent getPendingIntent() {
