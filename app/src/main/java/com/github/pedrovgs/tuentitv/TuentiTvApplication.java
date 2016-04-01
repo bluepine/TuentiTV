@@ -19,7 +19,7 @@ import android.app.Application;
 import android.content.Intent;
 
 import com.github.pedrovgs.tuentitv.di.RootModule;
-import com.github.pedrovgs.tuentitv.recommendation.service.RecommendationService;
+import com.github.pedrovgs.tuentitv.notification.service.RecommendationService;
 
 import java.util.List;
 

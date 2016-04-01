@@ -19,7 +19,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.github.pedrovgs.tuentitv.R;
-import com.github.pedrovgs.tuentitv.recommendation.service.RecommendationService;
+import com.github.pedrovgs.tuentitv.notification.service.RecommendationService;
 import com.github.pedrovgs.tuentitv.ui.fragment.DetailFragment;
 
 import java.util.LinkedList;

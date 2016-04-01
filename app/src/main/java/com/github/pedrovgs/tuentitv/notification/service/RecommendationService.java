@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.pedrovgs.tuentitv.recommendation.service;
+package com.github.pedrovgs.tuentitv.notification.service;
 
 import android.content.Intent;
 import android.util.Log;
 
 import com.github.pedrovgs.tuentitv.R;
-import com.github.pedrovgs.tuentitv.recommendation.builder.NotificationBuilder;
+import com.github.pedrovgs.tuentitv.notification.builder.NotificationBuilder;
 
 import java.io.IOException;
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.pedrovgs.tuentitv.recommendation.builder;
+package com.github.pedrovgs.tuentitv.notification.builder;
 
 import android.app.Notification;
 import android.app.NotificationManager;

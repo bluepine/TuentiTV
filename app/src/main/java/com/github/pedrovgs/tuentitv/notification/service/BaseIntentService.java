@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.pedrovgs.tuentitv.recommendation.service;
+package com.github.pedrovgs.tuentitv.notification.service;
 
 import android.app.IntentService;
 import android.content.Intent;

@@ -18,7 +18,7 @@ package com.github.pedrovgs.tuentitv.di;
 import android.content.Context;
 
 import com.github.pedrovgs.tuentitv.TuentiTvApplication;
-import com.github.pedrovgs.tuentitv.recommendation.service.RecommendationService;
+import com.github.pedrovgs.tuentitv.notification.service.RecommendationService;
 
 import dagger.Module;
 import dagger.Provides;
