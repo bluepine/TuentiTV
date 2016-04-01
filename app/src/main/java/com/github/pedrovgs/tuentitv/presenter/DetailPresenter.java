@@ -16,14 +16,13 @@
 package com.github.pedrovgs.tuentitv.presenter;
 
 import com.github.pedrovgs.tuentitv.ui.data.CardInfo;
-import javax.inject.Inject;
 
 /**
  * Presenter used by DetailFragment and created to implement all the presentation logic related to
  * show one contact or one ConversationSummary as detailed information. To work with this
  * presenter, the presenter client have to register a view and also indicate which is the element
  * id to show.
- *
+ * <p/>
  * This class is designed to show information to CardInfo interface instead of ConversationSummary
  * or Contact to improve the coupling between view implementations and model knowledge. Agenda and
  * Chat objects are going to be used as data repositories to find elements using CardInfo id.
@@ -32,40 +31,40 @@ import javax.inject.Inject;
  */
 public class DetailPresenter {
 
-  private View view;
+    private View view;
 
 
-  public void setView(View view) {
-    this.view = view;
-  }
+    public void setView(View view) {
+        this.view = view;
+    }
 
-  /**
-   * Using a content id search a CardInfo instance to show inside user Agenda or user Chat. Once
-   * the information is ready, this CardInfo instance is used to show that info to the user.
-   */
-  public void loadContent(String contentId) {
-    CardInfo cardInfo = loadCardInfo(contentId);
-    showBackground(cardInfo);
-    showCardInfoDetails(cardInfo);
-  }
+    /**
+     * Using a content id search a CardInfo instance to show inside user Agenda or user Chat. Once
+     * the information is ready, this CardInfo instance is used to show that info to the user.
+     */
+    public void loadContent(String contentId) {
+        CardInfo cardInfo = loadCardInfo(contentId);
+        showBackground(cardInfo);
+        showCardInfoDetails(cardInfo);
+    }
 
-  private CardInfo loadCardInfo(String contentId) {
-    CardInfo cardInfo = null;
-    return cardInfo;
-  }
+    private CardInfo loadCardInfo(String contentId) {
+        CardInfo cardInfo = null;
+        return cardInfo;
+    }
 
-  private void showBackground(CardInfo cardInfo) {
-    view.showBackground(cardInfo.getSecondaryImage());
-  }
+    private void showBackground(CardInfo cardInfo) {
+        view.showBackground(cardInfo.getSecondaryImage());
+    }
 
-  private void showCardInfoDetails(CardInfo cardInfo) {
-    view.showCardInfo(cardInfo);
-  }
+    private void showCardInfoDetails(CardInfo cardInfo) {
+        view.showCardInfo(cardInfo);
+    }
 
-  public interface View {
+    public interface View {
 
-    void showBackground(String backgroundUrl);
+        void showBackground(String backgroundUrl);
 
-    void showCardInfo(CardInfo cardInfo);
-  }
+        void showCardInfo(CardInfo cardInfo);
+    }
 }

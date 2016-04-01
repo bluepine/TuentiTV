@@ -18,7 +18,9 @@ package com.github.pedrovgs.tuentitv.ui.activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Bundle;
+
 import com.github.pedrovgs.tuentitv.R;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,19 +32,21 @@ import java.util.List;
  */
 public class MainActivity extends BaseActivity {
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
-    setContentView(R.layout.main_activity);
-    super.onCreate(savedInstanceState);
-    cancelNotifications();
-  }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.main_activity);
+        super.onCreate(savedInstanceState);
+        cancelNotifications();
+    }
 
-  private void cancelNotifications() {
-    NotificationManager notificationManager =
-        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-    notificationManager.cancelAll();
-  }
+    private void cancelNotifications() {
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancelAll();
+    }
 
-  @Override protected List getModules() {
-    return new LinkedList();
-  }
+    @Override
+    protected List getModules() {
+        return new LinkedList();
+    }
 }

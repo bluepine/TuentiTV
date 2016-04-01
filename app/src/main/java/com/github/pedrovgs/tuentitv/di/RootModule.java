@@ -16,8 +16,10 @@
 package com.github.pedrovgs.tuentitv.di;
 
 import android.content.Context;
+
 import com.github.pedrovgs.tuentitv.TuentiTvApplication;
 import com.github.pedrovgs.tuentitv.recommendation.service.RecommendationService;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -25,29 +27,32 @@ import dagger.Provides;
  * Main Dagger module created to provide every dependency with an application scope and Application
  * context. This module is  going to be used to include other modules with application scope and
  * provide some Android common dependencies.
- *
+ * <p/>
  * This module injects every Activity/Fragment of this project because we are going to use activity
  * graphs just to support a Navigator implementation described in this talk:
  * http://www.slideshare.net/PedroVicenteGmezSnch/effective-android-ui-english
- *
+ * <p/>
  * Presenter implementations are injected over the activity graph without any provisioning method
  * and that's why we don't need to inject Activities and Fragments in activity scope modules.
  *
  * @author Pedro Vicente Gómez Sánchez.
  */
 @Module(
-    includes = { TuentiTvApplicationModule.class },
-    injects = {
-        TuentiTvApplication.class, RecommendationService.class
-    }, library = true) public class RootModule {
+        includes = {TuentiTvApplicationModule.class},
+        injects = {
+                TuentiTvApplication.class, RecommendationService.class
+        }, library = true)
+public class RootModule {
 
-  private final Context context;
+    private final Context context;
 
-  public RootModule(Context context) {
-    this.context = context;
-  }
+    public RootModule(Context context) {
+        this.context = context;
+    }
 
-  @ApplicationContext @Provides Context provideApplicationContext() {
-    return context;
-  }
+    @ApplicationContext
+    @Provides
+    Context provideApplicationContext() {
+        return context;
+    }
 }

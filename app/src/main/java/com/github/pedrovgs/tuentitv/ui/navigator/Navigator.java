@@ -18,12 +18,14 @@ package com.github.pedrovgs.tuentitv.ui.navigator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+
 import com.github.pedrovgs.tuentitv.di.ActivityContext;
 import com.github.pedrovgs.tuentitv.ui.activity.DetailActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.LoadingActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.MainActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.SearchActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.ShowImageActivity;
+
 import javax.inject.Inject;
 
 /**
@@ -34,44 +36,45 @@ import javax.inject.Inject;
  */
 public class Navigator {
 
-  private final Activity context;
+    private final Activity context;
 
-  @Inject public Navigator(@ActivityContext Context context) {
-    this.context = (Activity) context;
-  }
+    @Inject
+    public Navigator(@ActivityContext Context context) {
+        this.context = (Activity) context;
+    }
 
-  public void openMainView() {
-    Intent intent = generateBaseIntent(MainActivity.class);
-    startActivity(intent);
-  }
+    public void openMainView() {
+        Intent intent = generateBaseIntent(MainActivity.class);
+        startActivity(intent);
+    }
 
-  public void openLoadingView() {
-    Intent intent = generateBaseIntent(LoadingActivity.class);
-    startActivity(intent);
-  }
+    public void openLoadingView() {
+        Intent intent = generateBaseIntent(LoadingActivity.class);
+        startActivity(intent);
+    }
 
-  public void openSearchView() {
-    Intent intent = generateBaseIntent(SearchActivity.class);
-    startActivity(intent);
-  }
+    public void openSearchView() {
+        Intent intent = generateBaseIntent(SearchActivity.class);
+        startActivity(intent);
+    }
 
-  public void openDetailView(String id) {
-    Intent intent = generateBaseIntent(DetailActivity.class);
-    intent.putExtra(DetailActivity.ID_EXTRA, id);
-    startActivity(intent);
-  }
+    public void openDetailView(String id) {
+        Intent intent = generateBaseIntent(DetailActivity.class);
+        intent.putExtra(DetailActivity.ID_EXTRA, id);
+        startActivity(intent);
+    }
 
-  public void openImageView(String imageUrl) {
-    Intent intent = generateBaseIntent(ShowImageActivity.class);
-    intent.putExtra(ShowImageActivity.IMAGE_URL_EXTRA, imageUrl);
-    startActivity(intent);
-  }
+    public void openImageView(String imageUrl) {
+        Intent intent = generateBaseIntent(ShowImageActivity.class);
+        intent.putExtra(ShowImageActivity.IMAGE_URL_EXTRA, imageUrl);
+        startActivity(intent);
+    }
 
-  private Intent generateBaseIntent(Class clazz) {
-    return new Intent(context, clazz);
-  }
+    private Intent generateBaseIntent(Class clazz) {
+        return new Intent(context, clazz);
+    }
 
-  private void startActivity(Intent intent) {
-    context.startActivity(intent);
-  }
+    private void startActivity(Intent intent) {
+        context.startActivity(intent);
+    }
 }

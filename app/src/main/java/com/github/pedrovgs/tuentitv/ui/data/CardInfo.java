@@ -22,13 +22,13 @@ package com.github.pedrovgs.tuentitv.ui.data;
  */
 public interface CardInfo {
 
-  String getId();
+    String getId();
 
-  String getCardImageUrl();
+    String getCardImageUrl();
 
-  String getTitle();
+    String getTitle();
 
-  String getText();
+    String getText();
 
-  String getSecondaryImage();
+    String getSecondaryImage();
 }

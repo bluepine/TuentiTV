@@ -16,53 +16,54 @@
 package com.github.pedrovgs.tuentitv.presenter;
 
 import com.github.pedrovgs.tuentitv.ui.navigator.Navigator;
-import java.util.List;
+
 import javax.inject.Inject;
 
 /**
  * Class created to work as search view presenter. This presenter has all the responsibility
  * related search a contact using the name.
- *
+ * <p/>
  * Main collaborator of this class is Agenda, used to search contacts by name.
  *
  * @author Pedro Vicente Gómez Sánchez.
  */
 public class SearchPresenter {
 
-  private final Navigator navigator;
+    private final Navigator navigator;
 
-  private View view;
+    private View view;
 
-  @Inject public SearchPresenter(Navigator navigator) {
-    this.navigator = navigator;
-  }
+    @Inject
+    public SearchPresenter(Navigator navigator) {
+        this.navigator = navigator;
+    }
 
-  public void setView(View view) {
-    this.view = view;
-  }
+    public void setView(View view) {
+        this.view = view;
+    }
 
-  public void loadContacts() {
+    public void loadContacts() {
 //    List<Contact> contacts = agenda.getContacts();
 //    view.showAllContacts(contacts);
-  }
+    }
 
-  public void searchContacts(String query) {
+    public void searchContacts(String query) {
 //    String lowerCaseQuery = query.toLowerCase();
 //    List<Contact> contacts = agenda.getContactsWithName(lowerCaseQuery);
 //    view.showSearchResultContacts(query, contacts);
-  }
+    }
 
 //  public void onContactClicked(Contact contact) {
 //    navigator.openDetailView(contact.getId());
 //    view.finish();
 //  }
 
-  public interface View {
+    public interface View {
 
 //    void showAllContacts(List<Contact> contacts);
 //
 //    void showSearchResultContacts(String query, List<Contact> contacts);
 
-    void finish();
-  }
+        void finish();
+    }
 }

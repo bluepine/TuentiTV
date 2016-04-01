@@ -26,19 +26,21 @@ import com.github.pedrovgs.tuentitv.ui.data.ImageInfo;
  */
 public class MediaElement implements ImageInfo {
 
-  private final String title;
-  private final String imageUrl;
+    private final String title;
+    private final String imageUrl;
 
-  public MediaElement(String title, String imageUrl) {
-    this.title = title;
-    this.imageUrl = imageUrl;
-  }
+    public MediaElement(String title, String imageUrl) {
+        this.title = title;
+        this.imageUrl = imageUrl;
+    }
 
-  @Override public String getTitle() {
-    return title;
-  }
+    @Override
+    public String getTitle() {
+        return title;
+    }
 
-  @Override public String getImageUrl() {
-    return imageUrl;
-  }
+    @Override
+    public String getImageUrl() {
+        return imageUrl;
+    }
 }

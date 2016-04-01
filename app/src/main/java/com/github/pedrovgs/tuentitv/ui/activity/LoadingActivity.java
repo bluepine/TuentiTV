@@ -18,12 +18,16 @@ package com.github.pedrovgs.tuentitv.ui.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ProgressBar;
-import butterknife.InjectView;
+
 import com.github.pedrovgs.tuentitv.R;
 import com.github.pedrovgs.tuentitv.ui.navigator.Navigator;
+
 import java.util.LinkedList;
 import java.util.List;
+
 import javax.inject.Inject;
+
+import butterknife.InjectView;
 
 /**
  * Activity created to show a view with a big loading inside. Few seconds after this Activity be
@@ -33,47 +37,53 @@ import javax.inject.Inject;
  */
 public class LoadingActivity extends BaseActivity {
 
-  private static final long LOADING_TIME_IN_MILLIS = 3000;
+    private static final long LOADING_TIME_IN_MILLIS = 3000;
 
-  @Inject Navigator navigator;
-  @InjectView(R.id.pb_loading) ProgressBar pb_loading;
+    @Inject
+    Navigator navigator;
+    @InjectView(R.id.pb_loading)
+    ProgressBar pb_loading;
 
-  private Runnable startMainActivity;
-  private Handler handler;
+    private Runnable startMainActivity;
+    private Handler handler;
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
-    setContentView(R.layout.loading_activity);
-    super.onCreate(savedInstanceState);
-    configureProgressBarColor();
-    startMainActivityOnLoadingFinished();
-  }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.loading_activity);
+        super.onCreate(savedInstanceState);
+        configureProgressBarColor();
+        startMainActivityOnLoadingFinished();
+    }
 
-  @Override public void onBackPressed() {
-    super.onBackPressed();
-    handler.removeCallbacks(startMainActivity);
-  }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        handler.removeCallbacks(startMainActivity);
+    }
 
-  private void startMainActivityOnLoadingFinished() {
-    handler = new Handler();
-    startMainActivity = new Runnable() {
-      @Override public void run() {
-        startMainActivity();
-      }
-    };
-    handler.postDelayed(startMainActivity, LOADING_TIME_IN_MILLIS);
-  }
+    private void startMainActivityOnLoadingFinished() {
+        handler = new Handler();
+        startMainActivity = new Runnable() {
+            @Override
+            public void run() {
+                startMainActivity();
+            }
+        };
+        handler.postDelayed(startMainActivity, LOADING_TIME_IN_MILLIS);
+    }
 
-  private void startMainActivity() {
-    navigator.openMainView();
-    finish();
-  }
+    private void startMainActivity() {
+        navigator.openMainView();
+        finish();
+    }
 
-  private void configureProgressBarColor() {
-    pb_loading.getIndeterminateDrawable()
-        .setColorFilter(0x32FFFFFF, android.graphics.PorterDuff.Mode.MULTIPLY);
-  }
+    private void configureProgressBarColor() {
+        pb_loading.getIndeterminateDrawable()
+                .setColorFilter(0x32FFFFFF, android.graphics.PorterDuff.Mode.MULTIPLY);
+    }
 
-  @Override protected List getModules() {
-    return new LinkedList();
-  }
+    @Override
+    protected List getModules() {
+        return new LinkedList();
+    }
 }

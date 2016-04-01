@@ -16,6 +16,7 @@
 package com.github.pedrovgs.tuentitv.ui.fragment;
 
 import android.os.Bundle;
+
 import com.github.pedrovgs.tuentitv.ui.activity.BaseActivity;
 
 /**
@@ -27,16 +28,17 @@ import com.github.pedrovgs.tuentitv.ui.activity.BaseActivity;
  */
 public abstract class SearchBaseFragment extends android.support.v17.leanback.app.SearchFragment {
 
-  @Override public void onActivityCreated(Bundle savedInstanceState) {
-    super.onActivityCreated(savedInstanceState);
-    injectDependencies();
-  }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        injectDependencies();
+    }
 
-  /**
-   * Replace every field annotated using @Inject annotation with the provided dependency specified
-   * inside a Dagger module value.
-   */
-  private void injectDependencies() {
-    ((BaseActivity) getActivity()).inject(this);
-  }
+    /**
+     * Replace every field annotated using @Inject annotation with the provided dependency specified
+     * inside a Dagger module value.
+     */
+    private void injectDependencies() {
+        ((BaseActivity) getActivity()).inject(this);
+    }
 }

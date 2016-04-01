@@ -15,15 +15,14 @@
  */
 package com.github.pedrovgs.tuentitv.recommendation.service;
 
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
+
 import com.github.pedrovgs.tuentitv.R;
 import com.github.pedrovgs.tuentitv.recommendation.builder.RecommendationBuilder;
-import com.github.pedrovgs.tuentitv.ui.activity.MainActivity;
 
 import java.io.IOException;
+
 import javax.inject.Inject;
 
 /**
@@ -36,36 +35,39 @@ import javax.inject.Inject;
  */
 public class RecommendationService extends BaseIntentService {
 
-  private static final String SERVICE_NAME = "RecommendationService";
+    private static final String SERVICE_NAME = "RecommendationService";
 
-  @Inject RecommendationBuilder recommendationBuilder;
+    @Inject
+    RecommendationBuilder recommendationBuilder;
 
-  public RecommendationService() {
-    super(SERVICE_NAME);
-  }
+    public RecommendationService() {
+        super(SERVICE_NAME);
+    }
 
-  @Override protected void onHandleIntent(Intent intent) {
-    new Thread(new Runnable() {
-      @Override public void run() {
+    @Override
+    protected void onHandleIntent(Intent intent) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
 //        ConversationSummary conversation = getRandomRecommendation();
-        configureRecommendationBuilder();
+                configureRecommendationBuilder();
 //        prepareRecommendation(conversation);
-        showRecommendation();
-      }
-    }).start();
-  }
+                showRecommendation();
+            }
+        }).start();
+    }
 
 //  private ConversationSummary getRandomRecommendation() {
 //    return chat.getLastUnreadConversation();
 //  }
 
-  private void showRecommendation() {
-    try {
-      recommendationBuilder.build();
-    } catch (IOException e) {
-      Log.e(SERVICE_NAME, "IOException building recommendation.", e);
+    private void showRecommendation() {
+        try {
+            recommendationBuilder.build();
+        } catch (IOException e) {
+            Log.e(SERVICE_NAME, "IOException building recommendation.", e);
+        }
     }
-  }
 
 //  private void prepareRecommendation(ConversationSummary conversation) {
 //    recommendationBuilder.setBackground(conversation.getCardImageUrl())
@@ -77,9 +79,9 @@ public class RecommendationService extends BaseIntentService {
 //        .setIntent(getPendingIntent());
 //  }
 
-  private void configureRecommendationBuilder() {
-    recommendationBuilder.setContext(getApplicationContext()).setSmallIcon(R.drawable.icn_wink);
-  }
+    private void configureRecommendationBuilder() {
+        recommendationBuilder.setContext(getApplicationContext()).setSmallIcon(R.drawable.icn_wink);
+    }
 
 //  private PendingIntent getPendingIntent() {
 //    Intent detailsIntent = new Intent(this, MainActivity.class);

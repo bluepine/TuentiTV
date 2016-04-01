@@ -21,6 +21,7 @@ import android.support.v17.leanback.widget.ImageCardView;
 import android.support.v17.leanback.widget.Presenter;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.github.pedrovgs.tuentitv.R;
 import com.github.pedrovgs.tuentitv.ui.data.CardInfo;
 import com.github.pedrovgs.tuentitv.ui.picasso.PicassoImageCardViewTarget;
@@ -34,73 +35,77 @@ import com.squareup.picasso.Picasso;
  */
 public class CardPresenter extends Presenter {
 
-  private Context context;
+    private Context context;
 
-  private static final int DEFAULT_CARD_WIDTH_IN_DP = 170;
-  private static final int DEFAULT_CARD_HEIGHT_IN_DP = 115;
+    private static final int DEFAULT_CARD_WIDTH_IN_DP = 170;
+    private static final int DEFAULT_CARD_HEIGHT_IN_DP = 115;
 
-  private final int cardWidthInDp;
-  private final int cardHeightInDp;
+    private final int cardWidthInDp;
+    private final int cardHeightInDp;
 
-  public CardPresenter() {
-    this(DEFAULT_CARD_WIDTH_IN_DP, DEFAULT_CARD_HEIGHT_IN_DP);
-  }
-
-  public CardPresenter(int cardWidthInDp, int cardHeightInDp) {
-    this.cardWidthInDp = cardWidthInDp;
-    this.cardHeightInDp = cardHeightInDp;
-  }
-
-  class ViewHolder extends Presenter.ViewHolder {
-
-    private ImageCardView imageCardView;
-    private Drawable defaultCardImage;
-    private PicassoImageCardViewTarget imageCardViewTarget;
-
-    public ViewHolder(View view) {
-      super(view);
-      imageCardView = (ImageCardView) view;
-      imageCardViewTarget = new PicassoImageCardViewTarget(imageCardView);
-      defaultCardImage = context.getResources().getDrawable(R.drawable.icn_application);
+    public CardPresenter() {
+        this(DEFAULT_CARD_WIDTH_IN_DP, DEFAULT_CARD_HEIGHT_IN_DP);
     }
 
-    protected void updateCardViewImage(String url) {
-      Picasso.with(context)
-          .load(url)
-          .resize(Util.convertDpToPixel(context, cardWidthInDp),
-              Util.convertDpToPixel(context, cardHeightInDp))
-          .centerCrop()
-          .placeholder(defaultCardImage)
-          .into(imageCardViewTarget);
+    public CardPresenter(int cardWidthInDp, int cardHeightInDp) {
+        this.cardWidthInDp = cardWidthInDp;
+        this.cardHeightInDp = cardHeightInDp;
     }
-  }
 
-  @Override public ViewHolder onCreateViewHolder(ViewGroup parent) {
-    context = parent.getContext();
+    class ViewHolder extends Presenter.ViewHolder {
 
-    ImageCardView cardView = new ImageCardView(context);
-    cardView.setFocusable(true);
-    cardView.setBackgroundColor(context.getResources().getColor(R.color.third_color));
-    return new ViewHolder(cardView);
-  }
+        private ImageCardView imageCardView;
+        private Drawable defaultCardImage;
+        private PicassoImageCardViewTarget imageCardViewTarget;
 
-  @Override public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
-    CardInfo cardInfo = (CardInfo) item;
-    if (cardInfo.getCardImageUrl() != null) {
-      ((ViewHolder) viewHolder).imageCardView.setTitleText(cardInfo.getTitle());
-      ((ViewHolder) viewHolder).imageCardView.setContentText(cardInfo.getText());
-      int cardWidth = Util.convertDpToPixel(context, cardWidthInDp);
-      int cardHeight = Util.convertDpToPixel(context, cardHeightInDp);
-      ((ViewHolder) viewHolder).imageCardView.setMainImageDimensions(cardWidth, cardHeight);
-      ((ViewHolder) viewHolder).updateCardViewImage(cardInfo.getCardImageUrl());
+        public ViewHolder(View view) {
+            super(view);
+            imageCardView = (ImageCardView) view;
+            imageCardViewTarget = new PicassoImageCardViewTarget(imageCardView);
+            defaultCardImage = context.getResources().getDrawable(R.drawable.icn_application);
+        }
+
+        protected void updateCardViewImage(String url) {
+            Picasso.with(context)
+                    .load(url)
+                    .resize(Util.convertDpToPixel(context, cardWidthInDp),
+                            Util.convertDpToPixel(context, cardHeightInDp))
+                    .centerCrop()
+                    .placeholder(defaultCardImage)
+                    .into(imageCardViewTarget);
+        }
     }
-  }
 
-  @Override public void onUnbindViewHolder(Presenter.ViewHolder viewHolder) {
-    //Empty
-  }
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent) {
+        context = parent.getContext();
 
-  @Override public void onViewAttachedToWindow(Presenter.ViewHolder viewHolder) {
-    //Empty
-  }
+        ImageCardView cardView = new ImageCardView(context);
+        cardView.setFocusable(true);
+        cardView.setBackgroundColor(context.getResources().getColor(R.color.third_color));
+        return new ViewHolder(cardView);
+    }
+
+    @Override
+    public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
+        CardInfo cardInfo = (CardInfo) item;
+        if (cardInfo.getCardImageUrl() != null) {
+            ((ViewHolder) viewHolder).imageCardView.setTitleText(cardInfo.getTitle());
+            ((ViewHolder) viewHolder).imageCardView.setContentText(cardInfo.getText());
+            int cardWidth = Util.convertDpToPixel(context, cardWidthInDp);
+            int cardHeight = Util.convertDpToPixel(context, cardHeightInDp);
+            ((ViewHolder) viewHolder).imageCardView.setMainImageDimensions(cardWidth, cardHeight);
+            ((ViewHolder) viewHolder).updateCardViewImage(cardInfo.getCardImageUrl());
+        }
+    }
+
+    @Override
+    public void onUnbindViewHolder(Presenter.ViewHolder viewHolder) {
+        //Empty
+    }
+
+    @Override
+    public void onViewAttachedToWindow(Presenter.ViewHolder viewHolder) {
+        //Empty
+    }
 }

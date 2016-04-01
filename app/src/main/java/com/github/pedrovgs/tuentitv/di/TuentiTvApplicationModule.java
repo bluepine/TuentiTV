@@ -16,9 +16,11 @@
 package com.github.pedrovgs.tuentitv.di;
 
 import com.github.pedrovgs.tuentitv.model.MediaGallery;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
-import javax.inject.Singleton;
 
 /**
  * Dagger module created to provide main module dependencies. Every dependency provided here is
@@ -27,9 +29,12 @@ import javax.inject.Singleton;
  * @author Pedro Vicente Gómez Sánchez.
  */
 
-@Module(library = true) public class TuentiTvApplicationModule {
+@Module(library = true)
+public class TuentiTvApplicationModule {
 
-  @Provides @Singleton MediaGallery provideMediaGalery() {
-    return new MediaGallery();
-  }
+    @Provides
+    @Singleton
+    MediaGallery provideMediaGalery() {
+        return new MediaGallery();
+    }
 }

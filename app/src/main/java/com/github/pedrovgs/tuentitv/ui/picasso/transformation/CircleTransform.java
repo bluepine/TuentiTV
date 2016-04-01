@@ -19,6 +19,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+
 import com.squareup.picasso.Transformation;
 
 /**
@@ -28,34 +29,36 @@ import com.squareup.picasso.Transformation;
  */
 public class CircleTransform implements Transformation {
 
-  private final int size;
+    private final int size;
 
-  public CircleTransform(float size) {
-    this.size = (int) size;
-  }
-
-  @Override public Bitmap transform(Bitmap source) {
-    Bitmap squaredBitmap = Bitmap.createScaledBitmap(source, size, size, false);
-    if (squaredBitmap != source) {
-      source.recycle();
+    public CircleTransform(float size) {
+        this.size = (int) size;
     }
-    Bitmap bitmap = Bitmap.createBitmap(size, size, source.getConfig());
 
-    Canvas canvas = new Canvas(bitmap);
-    Paint paint = new Paint();
-    BitmapShader shader =
-        new BitmapShader(squaredBitmap, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
-    paint.setShader(shader);
-    paint.setAntiAlias(true);
+    @Override
+    public Bitmap transform(Bitmap source) {
+        Bitmap squaredBitmap = Bitmap.createScaledBitmap(source, size, size, false);
+        if (squaredBitmap != source) {
+            source.recycle();
+        }
+        Bitmap bitmap = Bitmap.createBitmap(size, size, source.getConfig());
 
-    float r = size / 2f;
-    canvas.drawCircle(r, r, r, paint);
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint();
+        BitmapShader shader =
+                new BitmapShader(squaredBitmap, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
+        paint.setShader(shader);
+        paint.setAntiAlias(true);
 
-    squaredBitmap.recycle();
-    return bitmap;
-  }
+        float r = size / 2f;
+        canvas.drawCircle(r, r, r, paint);
 
-  @Override public String key() {
-    return "CircleTransformation";
-  }
+        squaredBitmap.recycle();
+        return bitmap;
+    }
+
+    @Override
+    public String key() {
+        return "CircleTransformation";
+    }
 }

@@ -15,12 +15,14 @@
  */
 package com.github.pedrovgs.tuentitv.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
+
 import com.github.pedrovgs.tuentitv.R;
 import com.github.pedrovgs.tuentitv.ui.navigator.Navigator;
+
 import java.util.LinkedList;
 import java.util.List;
+
 import javax.inject.Inject;
 
 /**
@@ -30,19 +32,23 @@ import javax.inject.Inject;
  */
 public class SearchActivity extends BaseActivity {
 
-  @Inject Navigator navigator;
+    @Inject
+    Navigator navigator;
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.search_activity);
-  }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.search_activity);
+    }
 
-  @Override public boolean onSearchRequested() {
-    navigator.openSearchView();
-    return true;
-  }
+    @Override
+    public boolean onSearchRequested() {
+        navigator.openSearchView();
+        return true;
+    }
 
-  @Override protected List getModules() {
-    return new LinkedList();
-  }
+    @Override
+    protected List getModules() {
+        return new LinkedList();
+    }
 }

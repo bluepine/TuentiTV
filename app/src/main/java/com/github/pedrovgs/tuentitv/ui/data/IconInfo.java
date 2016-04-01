@@ -23,19 +23,19 @@ package com.github.pedrovgs.tuentitv.ui.data;
  */
 public class IconInfo {
 
-  private final int title;
-  private final int iconId;
+    private final int title;
+    private final int iconId;
 
-  public IconInfo(int title, int iconId) {
-    this.title = title;
-    this.iconId = iconId;
-  }
+    public IconInfo(int title, int iconId) {
+        this.title = title;
+        this.iconId = iconId;
+    }
 
-  public int getTitle() {
-    return title;
-  }
+    public int getTitle() {
+        return title;
+    }
 
-  public int getIconId() {
-    return iconId;
-  }
+    public int getIconId() {
+        return iconId;
+    }
 }
