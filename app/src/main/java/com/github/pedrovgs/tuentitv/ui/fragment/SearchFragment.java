@@ -20,8 +20,10 @@ import android.os.Handler;
 import android.support.v17.leanback.widget.ArrayObjectAdapter;
 import android.support.v17.leanback.widget.ListRowPresenter;
 import android.support.v17.leanback.widget.ObjectAdapter;
-import android.support.v17.leanback.widget.OnItemClickedListener;
+import android.support.v17.leanback.widget.OnItemViewClickedListener;
+import android.support.v17.leanback.widget.Presenter;
 import android.support.v17.leanback.widget.Row;
+import android.support.v17.leanback.widget.RowPresenter;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -58,7 +60,7 @@ public class SearchFragment extends SearchBaseFragment
 
         rowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         setSearchResultProvider(this);
-        setOnItemClickedListener(getDefaultItemClickedListener());
+        setOnItemViewClickedListener(getDefaultItemClickedListener());
         delayedLoad = new SearchRunnable();
     }
 
@@ -112,11 +114,11 @@ public class SearchFragment extends SearchBaseFragment
         getActivity().finish();
     }
 
-    protected OnItemClickedListener getDefaultItemClickedListener() {
-        return new OnItemClickedListener() {
+    protected OnItemViewClickedListener getDefaultItemClickedListener() {
+        return new OnItemViewClickedListener() {
             @Override
-            public void onItemClicked(Object item, Row row) {
-//        searchPresenter.onContactClicked((Contact) item);
+            public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item, RowPresenter.ViewHolder rowViewHolder, Row row) {
+
             }
         };
     }

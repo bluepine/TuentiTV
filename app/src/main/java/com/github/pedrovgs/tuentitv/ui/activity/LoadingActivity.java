@@ -27,7 +27,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * Activity created to show a view with a big loading inside. Few seconds after this Activity be
@@ -41,7 +41,7 @@ public class LoadingActivity extends BaseActivity {
 
     @Inject
     Navigator navigator;
-    @InjectView(R.id.pb_loading)
+    @Bind(R.id.pb_loading)
     ProgressBar pb_loading;
 
     private Runnable startMainActivity;
@@ -49,8 +49,9 @@ public class LoadingActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.loading_activity);
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.loading_activity);
+        inject();
         configureProgressBarColor();
         startMainActivityOnLoadingFinished();
     }
@@ -69,7 +70,7 @@ public class LoadingActivity extends BaseActivity {
                 startMainActivity();
             }
         };
-        handler.postDelayed(startMainActivity, LOADING_TIME_IN_MILLIS);
+        handler.post(startMainActivity);
     }
 
     private void startMainActivity() {

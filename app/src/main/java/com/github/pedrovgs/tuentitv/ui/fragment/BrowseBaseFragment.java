@@ -15,6 +15,7 @@
  */
 package com.github.pedrovgs.tuentitv.ui.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v17.leanback.app.BrowseFragment;
 
@@ -33,6 +34,11 @@ public abstract class BrowseBaseFragment extends BrowseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         injectDependencies();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     /**

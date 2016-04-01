@@ -34,8 +34,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.main_activity);
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.main_activity);
+        inject();
         cancelNotifications();
     }
 

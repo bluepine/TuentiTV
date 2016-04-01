@@ -36,15 +36,20 @@ import dagger.ObjectGraph;
 public abstract class BaseActivity extends FragmentActivity {
 
     private ObjectGraph activityObjectGraph;
+    private boolean mInjected = false;
 
-    /**
-     * Inject dependencies and views using Dagger and ButterKnife as libraries.
-     */
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void inject() {
+        mInjected = true;
         initializeDependencyInjectorForActivityScopeGraph();
         injectViews();
+    }
+
+    @Override
+    protected void onResume() {
+        if(!mInjected){
+            throw new RuntimeException("Activity has not been injected!");
+        }
+        super.onResume();
     }
 
     /**
@@ -81,6 +86,6 @@ public abstract class BaseActivity extends FragmentActivity {
      * value.
      */
     private void injectViews() {
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
 }

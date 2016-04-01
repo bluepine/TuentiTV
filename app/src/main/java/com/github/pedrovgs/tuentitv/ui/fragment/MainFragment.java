@@ -83,6 +83,7 @@ public class MainFragment extends BrowseBaseFragment implements MainPresenter.Vi
         prepareBackgroundManager();
         hookListeners();
         presenter.loadData();
+//        setRetainInstance(true);
     }
 
     @Override
@@ -153,7 +154,7 @@ public class MainFragment extends BrowseBaseFragment implements MainPresenter.Vi
         for (Object element : elements) {
             listRowAdapter.add(element);
         }
-        HeaderItem header = new HeaderItem(id, getString(title), null);
+        HeaderItem header = new HeaderItem(id, getString(title));
         rowsAdapter.add(new ListRow(header, listRowAdapter));
     }
 
@@ -163,7 +164,7 @@ public class MainFragment extends BrowseBaseFragment implements MainPresenter.Vi
         for (IconInfo iconInfo : preferences) {
             listRowAdapter.add(iconInfo);
         }
-        rowsAdapter.add(new ListRow(new HeaderItem(id, title, ""), listRowAdapter));
+        rowsAdapter.add(new ListRow(new HeaderItem(id, title), listRowAdapter));
     }
 
     private void prepareBackgroundManager() {

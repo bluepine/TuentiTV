@@ -28,7 +28,7 @@ import com.squareup.picasso.Picasso;
 import java.util.LinkedList;
 import java.util.List;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * Activity created to show an Image given a URL passed as parameter.
@@ -41,15 +41,16 @@ public class ShowImageActivity extends BaseActivity {
 
     private static final int ALPHA_ANIMATION_DURATION = 1000;
 
-    @InjectView(R.id.iv_media_element)
+    @Bind(R.id.iv_media_element)
     ImageView iv_media_element;
-    @InjectView(R.id.pb_loading)
+    @Bind(R.id.pb_loading)
     ProgressBar pb_loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.show_image_activity);
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.show_image_activity);
+        inject();
         String imageUrl = getImageUrlFromExtras();
         Picasso.with(this).load(imageUrl).into(iv_media_element, new Callback() {
             @Override
