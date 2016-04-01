@@ -27,10 +27,10 @@ import android.support.v17.leanback.widget.Row;
 import android.text.TextUtils;
 import android.util.Log;
 import com.github.pedrovgs.tuentitv.R;
-import com.github.pedrovgs.tuentitv.model.Contact;
+//import com.github.pedrovgs.tuentitv.model.Contact;
 import com.github.pedrovgs.tuentitv.presenter.SearchPresenter;
 import com.github.pedrovgs.tuentitv.ui.viewpresenter.CardPresenter;
-import java.util.List;
+//import java.util.List;
 import javax.inject.Inject;
 
 /**
@@ -83,24 +83,24 @@ public class SearchFragment extends SearchBaseFragment
     return true;
   }
 
-  @Override public void showAllContacts(List<Contact> contacts) {
-    ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new CardPresenter());
-    for (Contact contact : contacts) {
-      arrayObjectAdapter.add(contact);
-    }
-    HeaderItem headerItem = new HeaderItem(getString(R.string.contacts_item_title), "");
-    rowsAdapter.add(new ListRow(headerItem, arrayObjectAdapter));
-  }
-
-  @Override public void showSearchResultContacts(String query, List<Contact> contacts) {
-    ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new CardPresenter());
-    for (Contact contact : contacts) {
-      arrayObjectAdapter.add(contact);
-    }
-    String resultSearchTitle = getString(R.string.search_result, query);
-    HeaderItem headerItem = new HeaderItem(resultSearchTitle, "");
-    rowsAdapter.add(new ListRow(headerItem, arrayObjectAdapter));
-  }
+//  @Override public void showAllContacts(List<Contact> contacts) {
+//    ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new CardPresenter());
+//    for (Contact contact : contacts) {
+//      arrayObjectAdapter.add(contact);
+//    }
+//    HeaderItem headerItem = new HeaderItem(getString(R.string.contacts_item_title), "");
+//    rowsAdapter.add(new ListRow(headerItem, arrayObjectAdapter));
+//  }
+//
+//  @Override public void showSearchResultContacts(String query, List<Contact> contacts) {
+//    ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new CardPresenter());
+//    for (Contact contact : contacts) {
+//      arrayObjectAdapter.add(contact);
+//    }
+//    String resultSearchTitle = getString(R.string.search_result, query);
+//    HeaderItem headerItem = new HeaderItem(resultSearchTitle, "");
+//    rowsAdapter.add(new ListRow(headerItem, arrayObjectAdapter));
+//  }
 
   @Override public void finish() {
     getActivity().finish();
@@ -109,7 +109,7 @@ public class SearchFragment extends SearchBaseFragment
   protected OnItemClickedListener getDefaultItemClickedListener() {
     return new OnItemClickedListener() {
       @Override public void onItemClicked(Object item, Row row) {
-        searchPresenter.onContactClicked((Contact) item);
+//        searchPresenter.onContactClicked((Contact) item);
       }
     };
   }

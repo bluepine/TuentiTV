@@ -15,8 +15,6 @@
  */
 package com.github.pedrovgs.tuentitv.presenter;
 
-import com.github.pedrovgs.tuentitv.model.Agenda;
-import com.github.pedrovgs.tuentitv.model.Contact;
 import com.github.pedrovgs.tuentitv.ui.navigator.Navigator;
 import java.util.List;
 import javax.inject.Inject;
@@ -31,13 +29,11 @@ import javax.inject.Inject;
  */
 public class SearchPresenter {
 
-  private final Agenda agenda;
   private final Navigator navigator;
 
   private View view;
 
-  @Inject public SearchPresenter(Agenda agenda, Navigator navigator) {
-    this.agenda = agenda;
+  @Inject public SearchPresenter(Navigator navigator) {
     this.navigator = navigator;
   }
 
@@ -46,26 +42,26 @@ public class SearchPresenter {
   }
 
   public void loadContacts() {
-    List<Contact> contacts = agenda.getContacts();
-    view.showAllContacts(contacts);
+//    List<Contact> contacts = agenda.getContacts();
+//    view.showAllContacts(contacts);
   }
 
   public void searchContacts(String query) {
-    String lowerCaseQuery = query.toLowerCase();
-    List<Contact> contacts = agenda.getContactsWithName(lowerCaseQuery);
-    view.showSearchResultContacts(query, contacts);
+//    String lowerCaseQuery = query.toLowerCase();
+//    List<Contact> contacts = agenda.getContactsWithName(lowerCaseQuery);
+//    view.showSearchResultContacts(query, contacts);
   }
 
-  public void onContactClicked(Contact contact) {
-    navigator.openDetailView(contact.getId());
-    view.finish();
-  }
+//  public void onContactClicked(Contact contact) {
+//    navigator.openDetailView(contact.getId());
+//    view.finish();
+//  }
 
   public interface View {
 
-    void showAllContacts(List<Contact> contacts);
-
-    void showSearchResultContacts(String query, List<Contact> contacts);
+//    void showAllContacts(List<Contact> contacts);
+//
+//    void showSearchResultContacts(String query, List<Contact> contacts);
 
     void finish();
   }

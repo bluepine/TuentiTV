@@ -54,12 +54,12 @@ import javax.inject.Inject;
  */
 public class MainFragment extends BrowseBaseFragment implements MainPresenter.View {
 
-  private static final int CARD_WIDTH_IN_DP = 260;
-  private static final int CARD_HEIGHT_IN_DP = 150;
+//  private static final int CARD_WIDTH_IN_DP = 260;
+//  private static final int CARD_HEIGHT_IN_DP = 150;
   private static final int UPDATE_BACKGROUND_IMAGE_DELAY_MILLIS = 700;
-  private static final int FAVORITES_ROW = 1;
-  private static final int CONVERSATIONS_ROW = 2;
-  private static final int CONTACTS_ROW = 3;
+//  private static final int FAVORITES_ROW = 1;
+//  private static final int CONVERSATIONS_ROW = 2;
+//  private static final int CONTACTS_ROW = 3;
   private static final int MEDIA_ROW = 4;
   private static final int PREFERENCES_ROW = 5;
 
@@ -100,18 +100,17 @@ public class MainFragment extends BrowseBaseFragment implements MainPresenter.Vi
     handler.postDelayed(lastChangeBackgroundRunnable, UPDATE_BACKGROUND_IMAGE_DELAY_MILLIS);
   }
 
-  @Override public void showMainInformation(List<CardInfo> favorites, List<CardInfo> conversations,
-      List<CardInfo> contacts, List<ImageInfo> mediaElements, List<IconInfo> preferences) {
+  @Override public void showMainInformation(List<ImageInfo> mediaElements, List<IconInfo> preferences) {
     ArrayObjectAdapter rowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
-    CardPresenter bigCardPresenter = new CardPresenter(CARD_WIDTH_IN_DP, CARD_HEIGHT_IN_DP);
-    CardPresenter smallCarPresenter = new CardPresenter();
+//    CardPresenter bigCardPresenter = new CardPresenter(CARD_WIDTH_IN_DP, CARD_HEIGHT_IN_DP);
+//    CardPresenter smallCarPresenter = new CardPresenter();
 
-    addCardInfoElementsToRowsAdapter(R.string.favorites_item_title, favorites, rowsAdapter,
-        smallCarPresenter, FAVORITES_ROW);
-    addCardInfoElementsToRowsAdapter(R.string.recent_conversation_item_title, conversations,
-        rowsAdapter, bigCardPresenter, CONVERSATIONS_ROW);
-    addCardInfoElementsToRowsAdapter(R.string.contacts_item_title, contacts, rowsAdapter,
-        smallCarPresenter, CONTACTS_ROW);
+//    addCardInfoElementsToRowsAdapter(R.string.favorites_item_title, favorites, rowsAdapter,
+//        smallCarPresenter, FAVORITES_ROW);
+//    addCardInfoElementsToRowsAdapter(R.string.recent_conversation_item_title, conversations,
+//        rowsAdapter, bigCardPresenter, CONVERSATIONS_ROW);
+//    addCardInfoElementsToRowsAdapter(R.string.contacts_item_title, contacts, rowsAdapter,
+//        smallCarPresenter, CONTACTS_ROW);
     addImageInfoElementsToRowAdapter(R.string.media_elements_item_title, mediaElements, rowsAdapter,
         new ImagePresenter(), MEDIA_ROW);
     addIconInfoElementsToRowAdapter(getResources().getString(R.string.preferences), preferences,
@@ -129,15 +128,15 @@ public class MainFragment extends BrowseBaseFragment implements MainPresenter.Vi
     handler.removeCallbacks(lastChangeBackgroundRunnable);
   }
 
-  private void addCardInfoElementsToRowsAdapter(int title, List<CardInfo> elements,
-      ArrayObjectAdapter rowsAdapter, Presenter presenter, int id) {
-    ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(presenter);
-    for (Object element : elements) {
-      listRowAdapter.add(element);
-    }
-    HeaderItem header = new HeaderItem(id, getString(title), null);
-    rowsAdapter.add(new ListRow(header, listRowAdapter));
-  }
+//  private void addCardInfoElementsToRowsAdapter(int title, List<CardInfo> elements,
+//      ArrayObjectAdapter rowsAdapter, Presenter presenter, int id) {
+//    ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(presenter);
+//    for (Object element : elements) {
+//      listRowAdapter.add(element);
+//    }
+//    HeaderItem header = new HeaderItem(id, getString(title), null);
+//    rowsAdapter.add(new ListRow(header, listRowAdapter));
+//  }
 
   private void addImageInfoElementsToRowAdapter(int title, List<ImageInfo> elements,
       ArrayObjectAdapter rowsAdapter, Presenter presenter, int id) {

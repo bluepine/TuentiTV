@@ -16,11 +16,6 @@
 package com.github.pedrovgs.tuentitv.presenter;
 
 import com.github.pedrovgs.tuentitv.R;
-import com.github.pedrovgs.tuentitv.model.Accounts;
-import com.github.pedrovgs.tuentitv.model.Agenda;
-import com.github.pedrovgs.tuentitv.model.Chat;
-import com.github.pedrovgs.tuentitv.model.Contact;
-import com.github.pedrovgs.tuentitv.model.ConversationSummary;
 import com.github.pedrovgs.tuentitv.model.MediaElement;
 import com.github.pedrovgs.tuentitv.model.MediaGallery;
 import com.github.pedrovgs.tuentitv.ui.data.CardInfo;
@@ -45,21 +40,14 @@ import javax.inject.Inject;
  */
 public class MainPresenter {
 
-  private final Accounts accounts;
-  private final Agenda agenda;
   private final MediaGallery mediaGallery;
-  private final Chat chat;
   private final Navigator navigator;
 
   private View view;
 
   @Inject
-  public MainPresenter(Accounts accounts, Agenda agenda, MediaGallery mediaGallery, Chat chat,
-      Navigator navigator) {
-    this.accounts = accounts;
-    this.agenda = agenda;
+  public MainPresenter(MediaGallery mediaGallery, Navigator navigator) {
     this.mediaGallery = mediaGallery;
-    this.chat = chat;
     this.navigator = navigator;
   }
 
@@ -69,12 +57,12 @@ public class MainPresenter {
 
   public void loadData() {
     view.showDefaultBackground();
-    List<CardInfo> favorites = getFavoriteContacts();
-    List<CardInfo> conversations = getConversations();
-    List<CardInfo> contacts = getAllContacts();
+//    List<CardInfo> favorites = getFavoriteContacts();
+//    List<CardInfo> conversations = getConversations();
+//    List<CardInfo> contacts = getAllContacts();
     List<ImageInfo> mediaElements = getAllMediaElements();
     List<IconInfo> preferences = getPreferences();
-    view.showMainInformation(favorites, conversations, contacts, mediaElements, preferences);
+    view.showMainInformation(mediaElements, preferences);
   }
 
   public void onCardInfoSelected(CardInfo cardInfo) {
@@ -109,23 +97,7 @@ public class MainPresenter {
   }
 
   public void logout() {
-    accounts.logout();
     view.closeView();
-  }
-
-  private List<CardInfo> getFavoriteContacts() {
-    List<Contact> favorites = agenda.getFavorites();
-    return new LinkedList<CardInfo>(favorites);
-  }
-
-  private List<CardInfo> getConversations() {
-    List<ConversationSummary> conversations = chat.getRecentConversations();
-    return new ArrayList<CardInfo>(conversations);
-  }
-
-  private List<CardInfo> getAllContacts() {
-    List<Contact> contacts = agenda.getContacts();
-    return new ArrayList<CardInfo>(contacts);
   }
 
   private List<ImageInfo> getAllMediaElements() {
@@ -146,8 +118,7 @@ public class MainPresenter {
 
     void updateBackground(String imageUrl);
 
-    void showMainInformation(List<CardInfo> favorites, List<CardInfo> conversations,
-        List<CardInfo> contacts, List<ImageInfo> mediaElements, List<IconInfo> preferences);
+    void showMainInformation(List<ImageInfo> mediaElements, List<IconInfo> preferences);
 
     void showDefaultBackground();
 
