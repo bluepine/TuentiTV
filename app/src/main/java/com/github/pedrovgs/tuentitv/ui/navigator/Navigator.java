@@ -20,9 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.github.pedrovgs.tuentitv.di.ActivityContext;
 import com.github.pedrovgs.tuentitv.ui.activity.DetailActivity;
-import com.github.pedrovgs.tuentitv.ui.activity.EnterPasswordActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.LoadingActivity;
-import com.github.pedrovgs.tuentitv.ui.activity.LoginActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.MainActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.SearchActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.ShowImageActivity;
@@ -52,18 +50,8 @@ public class Navigator {
     startActivity(intent);
   }
 
-  public void startPasswordViewAndWaitForResult(int requestCode) {
-    Intent intent = generateBaseIntent(EnterPasswordActivity.class);
-    context.startActivityForResult(intent, requestCode);
-  }
-
   public void openSearchView() {
     Intent intent = generateBaseIntent(SearchActivity.class);
-    startActivity(intent);
-  }
-
-  public void openLoginView() {
-    Intent intent = generateBaseIntent(LoginActivity.class);
     startActivity(intent);
   }
 

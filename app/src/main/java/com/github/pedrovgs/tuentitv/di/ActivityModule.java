@@ -17,9 +17,7 @@ package com.github.pedrovgs.tuentitv.di;
 
 import android.content.Context;
 import com.github.pedrovgs.tuentitv.ui.activity.DetailActivity;
-import com.github.pedrovgs.tuentitv.ui.activity.EnterPasswordActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.LoadingActivity;
-import com.github.pedrovgs.tuentitv.ui.activity.LoginActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.MainActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.SearchActivity;
 import com.github.pedrovgs.tuentitv.ui.activity.ShowImageActivity;
@@ -37,7 +35,7 @@ import dagger.Provides;
  * @author Pedro Vicente Gómez Sánchez.
  */
 @Module(injects = {
-    LoginActivity.class, EnterPasswordActivity.class, LoadingActivity.class, MainActivity.class,
+    LoadingActivity.class, MainActivity.class,
     MainFragment.class, SearchActivity.class, SearchFragment.class, ShowImageActivity.class,
     DetailActivity.class, DetailFragment.class,
 }, library = true, complete = false) public class ActivityModule {

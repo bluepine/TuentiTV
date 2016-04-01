@@ -23,7 +23,8 @@ import com.github.pedrovgs.tuentitv.R;
 import com.github.pedrovgs.tuentitv.model.Chat;
 import com.github.pedrovgs.tuentitv.model.ConversationSummary;
 import com.github.pedrovgs.tuentitv.recommendation.builder.RecommendationBuilder;
-import com.github.pedrovgs.tuentitv.ui.activity.LoginActivity;
+import com.github.pedrovgs.tuentitv.ui.activity.MainActivity;
+
 import java.io.IOException;
 import javax.inject.Inject;
 
@@ -84,9 +85,9 @@ public class RecommendationService extends BaseIntentService {
   }
 
   private PendingIntent getPendingIntent() {
-    Intent detailsIntent = new Intent(this, LoginActivity.class);
+    Intent detailsIntent = new Intent(this, MainActivity.class);
     TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-    stackBuilder.addParentStack(LoginActivity.class);
+    stackBuilder.addParentStack(MainActivity.class);
     stackBuilder.addNextIntent(detailsIntent);
     PendingIntent intent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
     return intent;

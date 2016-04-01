@@ -110,7 +110,6 @@ public class MainPresenter {
 
   public void logout() {
     accounts.logout();
-    navigator.openLoginView();
     view.closeView();
   }
 
